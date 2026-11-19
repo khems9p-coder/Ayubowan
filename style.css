@@ -17,8 +17,6 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 #tabs a.on{color:var(--teal);font-weight:700}
 :root[data-theme=dark] #tabs a.on{color:#5fd0c4}
 #view{max-width:760px;margin:0 auto;padding:12px 14px 28px;outline:0}
-#wm{position:fixed;inset:0;z-index:10;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='220'><text x='20' y='150' font-family='sans-serif' font-size='24' font-weight='700' fill='%231F3A5F' transform='rotate(-28 150 110)'>Khem Chetry</text></svg>")}
-:root[data-theme=dark] #wm{opacity:.09;filter:invert(1)}
 /* home */
 .hero{background:linear-gradient(160deg,#1F3A5F,#0F6E6E);color:#fff;border-radius:18px;padding:20px 18px 16px;text-align:center;margin-bottom:14px}
 .hero img{width:100%;max-width:420px;border-radius:12px;background:#fff;margin-bottom:10px}

@@ -28,7 +28,7 @@ var BOOK = null;
 function getJSON(url) { return fetch(url, { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw new Error(url + ' → HTTP ' + r.status); return r.json(); }); }
 function loadBook() { return BOOK ? Promise.resolve(BOOK) : getJSON('book.json').then(function (j) { BOOK = j; return j; }); }
 function fail(e) {
-  chrome({ title: 'Sinhala Grammar', tab: 'home' });
+  chrome({ title: 'Ayubowan', tab: 'home' });
   view.innerHTML = '<div class="about"><div class="card"><b>The book could not be loaded</b><p>' + esc(e && e.message ? e.message : e) + '</p><p>Check that the <b>data</b> and <b>media</b> folders were uploaded along with the other files, then reload the page.</p><p><button class="btn" onclick="location.reload()">Reload</button></p></div></div>';
 }
 function byId(id) { for (var i = 0; i < TOC.chapters.length; i++) if (TOC.chapters[i].id === id) return i; return -1; }
@@ -41,7 +41,7 @@ function badge(c) {
 }
 function setTab(t) { document.querySelectorAll('#tabs a').forEach(function (a) { a.classList.toggle('on', a.dataset.t === t); }); }
 function chrome(o) {
-  titleEl.textContent = o.title || 'Sinhala Grammar';
+  titleEl.textContent = o.title || 'Ayubowan';
   backB.hidden = !o.back; markB.hidden = !o.mark; prog.style.width = '0';
   setTab(o.tab || '');
 }
@@ -61,7 +61,7 @@ function chRow(c, withSubs) {
   return h + '</div>';
 }
 function home() {
-  chrome({ title: 'Sinhala Grammar', tab: 'home' });
+  chrome({ title: 'Ayubowan', tab: 'home' });
   var last = store.get('last', null), html = '';
   var nd = TOC.chapters.filter(function (c) { return done[c.id]; }).length;
   html += '<div class="hero compact"><img src="m_cover.png" alt=""><div><div class="si">සිංහල ව්‍යාකරණය</div><h1>Sinhala Grammar for Beginners</h1><p>Compiled by Khem Chetry &middot; ' + nd + '/' + TOC.chapters.length + ' finished</p></div></div>';
@@ -197,7 +197,7 @@ $('#aa').onclick = function () {
 
 /* ---------- search ---------- */
 function search(q) {
-  document.title = 'Sinhala Grammar for Beginners';
+  document.title = 'Ayubowan';
   chrome({ title: 'Search', tab: 'search' });
   view.innerHTML = '<div class="sbox"><input id="q" type="search" placeholder="Search Sinhala, English, Hindi or romanised words" autocomplete="off" autocapitalize="off" spellcheck="false"></div><div id="res"><div class="hint"><button>dative</button><button>kiyawanawa</button><button>passive</button><button>ස්තූතියි</button><button>colours</button><button>essay</button></div><p class="muted">Type at least 2 letters. Words in the Roman letters (such as <b>mama</b>) are searchable too.</p></div>';
   var inp = $('#q'); inp.value = q || '';
@@ -247,11 +247,11 @@ function savedView() {
 function about() {
   chrome({ title: 'About', tab: 'about' });
   var A = window.APP || {}, dev = A.developer || 'Khem Chetry';
-  var em = A.email ? '<p><b>E-mail:</b> <a href="mailto:' + esc(A.email) + '?subject=' + encodeURIComponent('Sinhala Grammar for Beginners: feedback') + '">' + esc(A.email) + '</a></p>' : '';
+  var em = A.email ? '<p><b>E-mail:</b> <a href="mailto:' + esc(A.email) + '?subject=' + encodeURIComponent('Ayubowan: feedback') + '">' + esc(A.email) + '</a></p>' : '';
   var web = A.website ? '<p><b>Website:</b> <a href="' + esc(A.website) + '">' + esc(A.website) + '</a></p>' : '';
-  var fb = A.email ? '<a class="btn" href="mailto:' + esc(A.email) + '?subject=' + encodeURIComponent('Sinhala Grammar for Beginners: correction or suggestion') + '">Send feedback</a> ' : '';
+  var fb = A.email ? '<a class="btn" href="mailto:' + esc(A.email) + '?subject=' + encodeURIComponent('Ayubowan: correction or suggestion') + '">Send feedback</a> ' : '';
   view.innerHTML = '<div class="about">' +
-    '<div class="card"><h2 style="margin-top:0">Sinhala Grammar for Beginners</h2><p style="font-family:var(--sin);font-size:1.2rem;color:var(--maroon)">සිංහල ව්‍යාකරණය</p><p>A beginner’s guide to Sinhala grammar, especially for Hindi and English speakers. Thirty-two lessons, six revision tests and fourteen appendices, all available offline.</p><p><b>Compiled by</b> ' + esc(dev) + '</p><p class="mut">Version ' + esc(A.version || '1.0.0') + ' &middot; Updated ' + esc(A.updated || '') + '</p></div>' +
+    '<div class="card"><h2 style="margin-top:0">Ayubowan</h2><p style="font-family:var(--sin);font-size:1.2rem;color:var(--maroon)">සිංහල ව්‍යාකරණය</p><p>A beginner’s guide to Sinhala grammar, especially for Hindi and English speakers. Thirty-two lessons, six revision tests and fourteen appendices, all available offline.</p><p><b>Compiled by</b> ' + esc(dev) + '</p><p class="mut">Version ' + esc(A.version || '1.0.0') + ' &middot; Updated ' + esc(A.updated || '') + '</p></div>' +
     '<div class="card"><b>Please double-check</b><p>This book was prepared with the help of an AI tool together with the compiler’s own knowledge. There may be mistakes in spelling, grammar rules or examples. Teachers and native speakers of Sinhala are requested to check the contents before relying on them. Corrections and suggestions are always welcome.</p></div>' +
     '<div class="card"><b>Contact and feedback</b>' + em + web + '<p>Found a mistake or have an idea? Please tell the developer.</p><p>' + fb + '<button class="btn o" id="share">Share this app</button></p></div>' +
     '<div class="card"><b>Legal</b><p><a href="privacy.html">Privacy Policy</a><br><a href="terms.html">Terms of Use and Disclaimer</a></p><p class="mut">The app collects no personal data, shows no ads and works fully offline.</p></div>' +
@@ -261,8 +261,8 @@ function about() {
     '<p class="mut" style="text-align:center">&copy; 2026 ' + esc(dev) + '. All rights reserved.</p></div>';
   $('#reset').onclick = function () { if (confirm('Clear finished marks and reading positions?')) { done = {}; pos = {}; store.set('done', done); store.set('pos', pos); store.set('last', null); about(); } };
   $('#share').onclick = function () {
-    var txt = 'Sinhala Grammar for Beginners: a free offline book for learning Sinhala.' + (A.website ? ' ' + A.website : '');
-    if (navigator.share) navigator.share({ title: 'Sinhala Grammar for Beginners', text: txt }).catch(function () {});
+    var txt = 'Ayubowan: a free offline book for learning Sinhala.' + (A.website ? ' ' + A.website : '');
+    if (navigator.share) navigator.share({ title: 'Ayubowan', text: txt }).catch(function () {});
     else if (navigator.clipboard) navigator.clipboard.writeText(txt).then(function () { alert('Copied. You can paste it into a message.'); });
   };
 }
