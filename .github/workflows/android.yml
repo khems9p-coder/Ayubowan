@@ -111,7 +111,7 @@ jobs:
           BT=$(ls -d $ANDROID_HOME/build-tools/* | sort -V | tail -1)
           OUT=android/app/build/outputs
           $BT/zipalign -p 4 $OUT/apk/release/app-release-unsigned.apk $RUNNER_TEMP/aligned.apk
-          $BT/apksigner sign --ks "$RUNNER_TEMP/release.jks" --ks-alias "$KEY_ALIAS" \
+          $BT/apksigner sign --ks "$RUNNER_TEMP/release.jks" --ks-key-alias "$KEY_ALIAS" \
             --ks-pass pass:"$KEYSTORE_PASSWORD" --key-pass pass:"$KEY_PASSWORD" \
             --out $OUT/Sinhala-Grammar-release.apk $RUNNER_TEMP/aligned.apk
           cp $OUT/bundle/release/app-release.aab $OUT/Sinhala-Grammar-release.aab
