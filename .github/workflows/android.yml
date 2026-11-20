@@ -74,12 +74,12 @@ jobs:
               m = Image.new('L', (l, l), 0)
               ImageDraw.Draw(m).ellipse((0, 0, l - 1, l - 1), fill=255)
               r = a.copy(); r.putalpha(m); r.save(d + '/ic_launcher_round.png')
-              fg = Image.new('RGBA', (f, f), (31, 58, 95, 255))
-              i = src.resize((int(f * 0.62), int(f * 0.62)), Image.LANCZOS)
+              fg = Image.new('RGBA', (f, f), (253, 247, 230, 255))
+              i = src.resize((int(f * 0.70), int(f * 0.70)), Image.LANCZOS)
               fg.paste(i, ((f - i.width) // 2, (f - i.height) // 2))
               fg.save(d + '/sg_foreground.png')
           os.makedirs(res + '/values', exist_ok=True)
-          open(res + '/values/sg_colors.xml', 'w').write('<?xml version="1.0" encoding="utf-8"?><resources><color name="sg_icon_bg">#1F3A5F</color></resources>')
+          open(res + '/values/sg_colors.xml', 'w').write('<?xml version="1.0" encoding="utf-8"?><resources><color name="sg_icon_bg">#FDF7E6</color></resources>')
           os.makedirs(res + '/mipmap-anydpi-v26', exist_ok=True)
           xml = '<?xml version="1.0" encoding="utf-8"?><adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android"><background android:drawable="@color/sg_icon_bg"/><foreground android:drawable="@mipmap/sg_foreground"/></adaptive-icon>'
           for nme in ('ic_launcher.xml', 'ic_launcher_round.xml'):
